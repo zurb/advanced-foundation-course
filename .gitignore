@@ -1,2 +1,4 @@
 /vendor/*
 /css/*
+/.sass-cache/*
+*.DS_Store
