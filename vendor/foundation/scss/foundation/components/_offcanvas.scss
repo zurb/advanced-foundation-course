@@ -1,0 +1,327 @@
+@import "global";
+@import "type";
+@import "top-bar";
+
+// OFF CANVAS VARIABLES
+// Off Canvas Tab Bar Variables
+$tabbar-bg: #333 !default;
+$tabbar-height: em-calc(45) !default;
+$tabbar-line-height: $tabbar-height !default;
+$tabbar-color: #FFF !default;
+$tabbar-middle-padding: 0 em-calc(10) !default;
+
+// Off Canvas Divider Styles
+$tabbar-right-section-border: solid 1px lighten($tabbar-bg, 10%) !default;
+$tabbar-left-section-border: solid 1px darken($tabbar-bg, 10%) !default;
+
+// Off Canvas Tab Bar Headers
+$tabbar-header-color: #FFF !default;
+$tabbar-header-weight: bold !default;
+$tabbar-header-line-height: $tabbar-height !default;
+$tabbar-header-margin: 0 !default;
+
+// Off Canvas Menu Variables
+$off-canvas-width: 250px !default;
+$off-canvas-bg: #333 !default;
+
+// Off Canvas Menu List Variables
+$off-canvas-label-padding: 0.3em em-calc(15) !default;
+$off-canvas-label-color: #999 !default;
+$off-canvas-label-text-transform: uppercase !default;
+$off-canvas-label-font-weight: bold !default;
+$off-canvas-label-bg: #444 !default;
+$off-canvas-label-border-top: 1px solid lighten(#444, 10%) !default;
+$off-canvas-label-border-bottom: none !default;
+$off-canvas-label-margin:0 !default;
+$off-canvas-link-padding: em-calc(10, 15) !default;
+$off-canvas-link-color: rgba(#FFF, 0.7) !default;
+$off-canvas-link-border-bottom: 1px solid darken($off-canvas-bg, 5%) !default;
+
+// Off Canvas Menu Icon Variables
+$tabbar-menu-icon-color: #FFF !default;
+$tabbar-menu-icon-hover: darken($tabbar-menu-icon-color, 30%) !default;
+
+$tabbar-menu-icon-text-indent: em-calc(35) !default;
+$tabbar-menu-icon-width: $tabbar-height !default;
+$tabbar-menu-icon-height: $tabbar-height !default;
+$tabbar-menu-icon-line-height: em-calc(33) !default;
+$tabbar-menu-icon-padding: 0 !default;
+
+$tabbar-hamburger-icon-width: em-calc(16) !default;
+$tabbar-hamburger-icon-left: em-calc(13) !default;
+$tabbar-hamburger-icon-top: em-calc(5) !default;
+
+// Off Canvas Back-Link Overlay
+$off-canvas-overlay-transition: background 300ms ease !default;
+$off-canvas-overlay-cursor: pointer !default;
+$off-canvas-overlay-box-shadow: -4px 0 4px rgba(#000, 0.5), 4px 0 4px rgba(#000, 0.5) !default;
+$off-canvas-overlay-background: rgba(#FFF, 0.2) !default;
+$off-canvas-overlay-background-hover: rgba(#FFF, 0.05) !default;
+
+// Transition Variabls
+$menu-slide: "transform 500ms ease" !default;
+
+
+// EXTEND CLASSES
+// Remove transition flicker on phones
+%kill-flicker {
+  -webkit-transform: translateZ(0x);
+  -webkit-backface-visibility: hidden;
+}
+
+// Basic properties for the content wraps
+%wrap-base {
+  position: relative;
+  width: 100%;
+}
+
+// Translate3d mixin for all browsers
+@mixin translate3d($tx,$ty,$tz) {
+  -webkit-transform: translate3d($tx,$ty,$tz);
+  -moz-transform: translate3d($tx,$ty,$tz);
+  -ms-transform: translate3d($tx,$ty,$tz);
+  -o-transform: translate3d($tx,$ty,$tz);
+  transform: translate3d($tx,$ty,$tz)
+}
+
+//////////////////////////////////////////////////////////////
+
+// OFF CANVAS WRAP
+// Wrap visible content and prevent scroll bars
+.off-canvas-wrap {
+    @extend %kill-flicker;
+    @extend %wrap-base;
+    overflow: hidden;
+}
+
+// INNER WRAP
+// Main content area that moves to reveal the off-canvas nav
+.inner-wrap {
+    @extend %kill-flicker;
+    @extend %wrap-base;
+    top:0;
+    bottom:0;
+}
+
+// TAB BAR
+// This is a basic nav bar. There aren't a lot of pre-built components here besides the off-canvas buttons.
+nav.tab-bar {
+  @extend %kill-flicker;
+
+  // base styles
+  background: $tabbar-bg;
+  color: $tabbar-color;
+  height: $tabbar-height;
+  line-height: $tabbar-height;
+
+  // make sure it's below the .exit-offcanvas link
+  position: relative;
+  z-index: 999;
+
+  section.left {
+    width: $tabbar-height;
+    height: $tabbar-height;
+    border-right: $tabbar-left-section-border;
+    box-shadow: 1px 0 0 lighten($tabbar-bg, 10%);
+  }
+
+  section.right {
+    width: $tabbar-height;
+    height: $tabbar-height;
+    text-align: center;
+    border-left: $tabbar-right-section-border;
+    box-shadow: -1px 0 0 darken($tabbar-bg, 10%);
+  }
+
+  section.middle {
+    padding: $tabbar-middle-padding;
+    position: absolute;
+    text-align: center;
+    height: $tabbar-height;
+    left: $tabbar-height;
+    right: $tabbar-height;
+
+    @media #{$medium-up} {
+      text-align: left;
+    }
+    .row {
+      height: $tabbar-height;
+      line-height: $tabbar-height;
+    }
+    form {
+      margin:0;
+      input { margin:0; }
+      height: $tabbar-height;
+      line-height: $tabbar-height;
+      position: relative;
+      top: 8px;
+    }
+  }
+
+  a.button {
+    margin:0;
+  }
+
+  // Typography
+  h1,h2,h3,h4,h5,h6 {
+    color: $tabbar-header-color;
+    font-weight: $tabbar-header-weight;
+    line-height: $tabbar-header-line-height;
+    margin: $tabbar-header-margin;
+  }
+  h1,h2,h3,h4 { font-size: $h5-font-size; }
+
+}
+
+// MENU BUTTON
+a.menu-icon {
+  text-indent: $tabbar-menu-icon-text-indent;
+  width: $tabbar-height;
+  height: $tabbar-height;
+  display: block;
+  line-height: $tabbar-menu-icon-line-height;
+  padding: $tabbar-menu-icon-padding;
+  color: $topbar-menu-link-color;
+  position: relative;
+
+  // this is the actual hamburger icon
+  span {
+
+    position: absolute;
+    display: block;
+    width: $tabbar-hamburger-icon-width;
+    height: 0;
+    left: $tabbar-hamburger-icon-left;
+    top: $tabbar-hamburger-icon-top;
+    // margin-top: $tabbar-height / 4;
+
+    @if $experimental {
+      -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-color,
+                          0 16px 0 1px $tabbar-menu-icon-color,
+                          0 22px 0 1px $tabbar-menu-icon-color;
+    }
+      box-shadow:        0 10px 0 1px $tabbar-menu-icon-color,
+                          0 16px 0 1px $tabbar-menu-icon-color,
+                          0 22px 0 1px $tabbar-menu-icon-color;
+  }
+  &:hover span {
+    @if $experimental {
+      -webkit-box-shadow: 0 10px 0 1px $tabbar-menu-icon-hover,
+                          0 16px 0 1px $tabbar-menu-icon-hover,
+                          0 22px 0 1px $tabbar-menu-icon-hover;
+    }
+      box-shadow:        0 10px 0 1px $tabbar-menu-icon-hover,
+                          0 16px 0 1px $tabbar-menu-icon-hover,
+                          0 22px 0 1px $tabbar-menu-icon-hover;
+  }
+}
+
+.off-canvas-wrap {
+
+  > .inner-wrap {
+    -webkit-transition: -webkit-#{$menu-slide};
+    -moz-transition: -moz-#{$menu-slide};
+    -ms-transition: -ms-#{$menu-slide};
+    -o-transition: -o-#{$menu-slide};
+    transition: #{$menu-slide};
+  }
+
+  // basic styles for off-canvas menu container
+  %off-canvas-menu {
+    width: $off-canvas-width;
+    top:0;
+    bottom:0;
+    // min-height: 480px;
+    height: 100%;
+    position: absolute;
+    overflow-y: auto;
+
+    // base styles
+    background: $off-canvas-bg;
+
+    z-index: 1001;
+
+  }
+
+  .left-off-canvas-menu {
+    @extend %kill-flicker;
+    @extend %off-canvas-menu;
+    @include translate3d(-100%,0,0);
+
+  }
+  .right-off-canvas-menu {
+    @extend %kill-flicker;
+    @extend %off-canvas-menu;
+    @include translate3d(100%,0,0);
+    right:0;
+  }
+
+  ul.off-canvas-nav {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+
+    li {
+      label {
+        padding: $off-canvas-label-padding;
+        color: $off-canvas-label-color;
+        text-transform: $off-canvas-label-text-transform;
+        font-weight: $off-canvas-label-font-weight;
+        background: $off-canvas-label-bg;
+        border-top: $off-canvas-label-border-top;
+        border-bottom: $off-canvas-label-border-bottom;
+        margin: $off-canvas-label-margin;
+      }
+      a {
+        display: block;
+        padding: $off-canvas-link-padding;
+        color: $off-canvas-link-color;
+        border-bottom: $off-canvas-link-border-bottom;
+      }
+    }
+
+  }
+
+  @mixin back-link {
+      @extend %kill-flicker;
+
+      transition: $off-canvas-overlay-transition;
+      cursor: $off-canvas-overlay-cursor;
+      box-shadow: $off-canvas-overlay-box-shadow;
+
+      // fill the screen
+      display: block;
+      position: absolute;
+      background: $off-canvas-overlay-background;
+      top: 0;
+      bottom: 0;
+      left:0;
+      right:0;
+      z-index: 1002;
+
+      @media #{$medium-up} {
+        &:hover {
+          background: $off-canvas-overlay-background-hover;
+        }
+      }
+  }
+
+  &.move-right {
+    > .inner-wrap {
+      @include translate3d($off-canvas-width,0,0);
+    }
+    a.exit-off-canvas { @include back-link;}
+  }
+
+  &.move-left {
+    > .inner-wrap {
+      @include translate3d(-($off-canvas-width),0,0);
+
+    }
+    a.exit-off-canvas { @include back-link; }
+  }
+}
+
+.main-section {
+  @extend %kill-flicker;
+}
