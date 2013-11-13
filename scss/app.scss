@@ -1,7 +1,9 @@
 @import "foundation";
 
 // FONTS
-@import "fonts/foundation-icons";
+$fi-path: "../vendor/foundation-icon-fonts";
+@import "foundation-icons";
+
 
 // COMPONENTS
 @import "components/global";

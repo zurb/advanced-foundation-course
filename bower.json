@@ -2,6 +2,7 @@
   "name": "advanced-foundation-course",
   "version": "0.0.1",
   "dependencies": {
-    "foundation": "https://github.com/zurb/bower-foundation.git"
+    "foundation": "zurb/bower-foundation",
+    "foundation-icon-fonts": "zurb/foundation-icon-fonts"
   }
 }

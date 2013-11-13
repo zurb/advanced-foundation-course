@@ -12,6 +12,11 @@
 git clone git@github.com:zurb/advanced-foundation-course.git
 cd advanced-foundation-course
 bower install
+```
+
+When you're working on this project just run the following command:
+
+```bash
 compass watch
 ```
 
@@ -23,6 +28,7 @@ After you run the commands above you'll see the following directory structure
 advanced-foundation-course/
 ├── vendor/
 │   ├── foundation/
+│   ├── foundation-icon-fonts/
 │   ├── jquery/
 │   └── modernizr/
 ├── css/
