@@ -1,0 +1,36 @@
+// VIS NAVIGATION
+nav.example {
+	background: #000;
+	min-height: 45px;
+
+	ul.nav-list {
+		display: none;
+		list-style-type: none;
+		margin:0;
+		li {
+			display: block;
+			border-bottom: 1px solid #555;
+			@media #{$medium-up} { border-width:0px; }
+			a {
+				display: block;
+				padding: 10px 15px;
+			}
+		}
+
+		@media #{$medium-up} {
+			display: block;
+			li {
+				display: inline-block;
+				text-align: center;
+			}
+		}
+
+	}
+
+	.button.show-for-small {
+		display: inline-block !important;
+		margin-left: 15px;
+		margin-top:10px;
+		@media #{$medium-up} { display: none !important; }
+	}
+}
