@@ -1,0 +1,41 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <script src="../vendor/modernizr/modernizr.js"></script>
+    <style>
+    #thumbs .active img {border-bottom:4px solid #1399BD;}
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>Orbit Deeplinking</h1>
+        <ul id="thumbs" class="small-block-grid-3">
+          <li><a data-orbit-link="slide1"><img src="../img/img-1-small.jpg"></a></li>
+          <li><a data-orbit-link="slide2"><img src="../img/img-2-small.jpg"></a></li>
+          <li><a data-orbit-link="slide3"><img src="../img/img-3-small.jpg"></a></li>
+        </ul>
+        <hr>
+        <ul data-orbit data-options="timer_speed:3000;">
+          <li data-orbit-slide="slide1">
+            <img src="../img/img-1-large.jpg" alt="">
+          </li>
+          <li data-orbit-slide="slide2">
+            <img src="../img/img-2-large.jpg" alt="">
+          </li>
+          <li data-orbit-slide="slide3">
+            <img src="../img/img-3-large.jpg" alt="">
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/foundation/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
