@@ -1,9 +1,9 @@
 // GLOBAL
 
 // center headings by default on mobile
-// #{headings(all)} { 
-// 	text-align: center;
-// 	@media #{$medium-up} {
-// 		text-align: left;
-// 	}
-// }
+#{headings(all)} { 
+	text-align: center;
+	@media #{$medium-up} {
+		text-align: left;
+	}
+}

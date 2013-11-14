@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <script src="../vendor/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+
+
+    <div class="row">
+      <div class="small-12 columns">
+        
+        <h1>Nav &amp; Visibility Classes</h1>
+        <hr/>
+
+        <!-- Single Nav -->
+        <h3 id="single-nav">Single Nav</h3>
+        <nav class="example">
+          <a id="single-nav-btn" class="tiny button show-for-small">Menu</a>
+          <ul class="nav-list">
+           <li><a href="#">Home</a></li>
+           <li><a href="#">Page 1</a></li>
+           <li><a href="#">Page 2</a></li>
+           <li><a href="#">Page 3</a></li>
+           <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+
+        <hr/>
+
+        <!-- Multiple Navs -->
+        <h3 id="single-nav">Multiple Navs</h3>
+        <nav class="example hide-for-small">
+          <ul class="nav-list">
+           <li><a href="#"><i class="fi-home"></i> Home</a></li>
+           <li><a href="#"><i class="fi-page"></i> Page 1</a></li>
+           <li><a href="#"><i class="fi-page"></i> Page 2</a></li>
+           <li><a href="#"><i class="fi-page"></i> Page 3</a></li>
+           <li><a href="#"><i class="fi-list-thumbnails"></i> About</a></li>
+          </ul>
+        </nav>
+
+        <nav class="tab-bar show-for-small">
+          <section class="left">
+            <a class="off-canvas-left-toggle menu-icon" ><span></span></a>
+          </section>
+
+          <section class="middle">
+            <h1 class="title">Multiple Navs</h1>
+          </section>
+
+          <section class="right">
+            <a class="off-canvas-right-toggle menu-icon" ><span></span></a>
+          </section>
+        </nav>
+
+
+      </div>
+    </div>
+
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/foundation/js/foundation.min.js"></script>
+
+    <script>
+      $(document).foundation();  
+
+      $('#single-nav-btn').click(function(){
+        $('ul.nav-list').slideToggle();
+      });
+    </script>
+  </body>
+</html>
