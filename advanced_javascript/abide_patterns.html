@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <script src="../vendor/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+
+
+
+    <div class="row">
+      <div class="small-12 columns">
+        <a href="index.html">&larr; Back</a>
+        <h1>Abide w/Custom Patterns</h1>
+        <hr/>
+
+        <form data-abide>
+          <div class=”input-wrapper>
+            <label for="name">Enter 3 digits in a row</label>
+            <input type="text" name="digits" required pattern="\d{3}">
+            <small class="error">Please enter 3 digits in a row</small>
+          </div>
+          <div class=”input-wrapper>
+            <label for="name">Type in: i agree</label>
+            <input type="text" name="agreement" required pattern="^i agree$">
+            <small class="error">Please enter: i agree</small>
+          </div>
+          <button type="submit" class="button">Submit</button>
+        </form>
+      </div>
+    </div>
+
+
+     <script src="../vendor/jquery/jquery.min.js"></script>
+     <script src="../vendor/foundation/js/foundation.min.js"></script>
+     <script>
+      $(document).foundation();
+     </script>
+  </body>
+</html>
