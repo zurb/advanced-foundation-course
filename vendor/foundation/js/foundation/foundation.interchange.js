@@ -15,10 +15,12 @@
       load_attr : 'interchange',
 
       named_queries : {
-        'default' : 'only screen and (min-width: 1px)',
+        'default' : Foundation.media_queries.small,
         small : Foundation.media_queries.small,
         medium : Foundation.media_queries.medium,
         large : Foundation.media_queries.large,
+        xlarge : Foundation.media_queries.xlarge,
+        xxlarge: Foundation.media_queries.xxlarge,
         landscape : 'only screen and (orientation: landscape)',
         portrait : 'only screen and (orientation: portrait)',
         retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 

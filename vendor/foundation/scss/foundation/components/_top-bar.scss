@@ -15,11 +15,10 @@ $topbar-height: 45px !default;
 $topbar-margin-bottom: 0 !default;
 
 // Control Input height for top bar
-$topbar-input-height: 2.45em !default;
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: normal !default;
-$topbar-title-font-size: em-calc(17) !default;
+$topbar-title-font-size: rem-calc(17) !default;
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #333 !default;
@@ -34,23 +33,24 @@ $topbar-link-color: #fff !default;
 $topbar-link-color-hover: #fff !default;
 $topbar-link-color-active: #fff !default;
 $topbar-link-weight: normal !default;
-$topbar-link-font-size: em-calc(13) !default;
+$topbar-link-font-size: rem-calc(13) !default;
 $topbar-link-hover-lightness: -10% !default; // Darken by 10%
 $topbar-link-bg-hover: #272727 !default;
 $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: darken($primary-color, 5%) !default;
 $topbar-link-font-family: $body-font-family !default;
 
+$topbar-button-font-size: 0.75rem;
 
 $topbar-dropdown-label-color: #777 !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
 $topbar-dropdown-label-font-weight: bold !default;
-$topbar-dropdown-label-font-size: em-calc(10) !default;
+$topbar-dropdown-label-font-size: rem-calc(10) !default;
 $topbar-dropdown-label-bg: #333 !default;
 
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
-$topbar-menu-link-font-size: em-calc(13) !default;
+$topbar-menu-link-font-size: rem-calc(13) !default;
 $topbar-menu-link-weight: bold !default;
 $topbar-menu-link-color: #fff !default;
 $topbar-menu-icon-color: #fff !default;
@@ -59,9 +59,9 @@ $topbar-menu-icon-color-toggled: #888 !default;
 
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
-// Using em-calc for the below breakpoint causes issues with top bar
-$topbar-breakpoint: 940px !default; // Change to 9999px for always mobile layout
-$topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})" !default;
+// Using rem-calc for the below breakpoint causes issues with top bar
+$topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
+$topbar-media-query: $medium-up !default;
 
 // Divider Styles
 $topbar-divider-border-bottom: solid 1px lighten($topbar-bg-color, 10%) !default;
@@ -75,7 +75,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 // This class is generated despite the value of $include-html-top-bar-classes
 // to ensure width calculations work correctly.
 meta.foundation-mq-topbar {
-  font-family: $topbar-media-query;
+  font-family: "/" + unquote($topbar-media-query) + "/";
   width: $topbar-breakpoint;
 }
 
@@ -136,9 +136,17 @@ meta.foundation-mq-topbar {
       form,
       input { margin-bottom: 0; }
 
-      input { height: $topbar-input-height; }
+      input { height: auto; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
 
-      .button { padding-top: .5em; padding-bottom: .5em; margin-bottom: 0; }
+      .button { 
+        padding-top: .45rem; 
+        padding-bottom: .35rem; 
+        margin-bottom: 0; 
+        font-size: $topbar-button-font-size; 
+          // position: relative;
+          // top: -1px;
+        
+      }
 
       // Title Area
       .title-area {
@@ -149,7 +157,7 @@ meta.foundation-mq-topbar {
       .name {
         height: $topbar-height;
         margin: 0;
-        font-size: $em-base;
+        font-size: $rem-base;
 
         h1 {
           line-height: $topbar-height;
@@ -183,12 +191,12 @@ meta.foundation-mq-topbar {
           line-height: $topbar-height;
         }
 
-    // Menu toggle button on small devices
-    .toggle-topbar {
-      
-      position: absolute;
-      #{$opposite-direction}: 0;
-      top: 0;
+        // Adding the class "menu-icon" will add the 3-line icon people love and adore.
+        &.menu-icon {
+          #{$opposite-direction}: $topbar-height / 3;
+          top: 50%;
+          margin-top: -16px;
+          padding-#{$default-float}: 40px;
 
           a {
             text-indent: -48px;
@@ -241,6 +249,8 @@ meta.foundation-mq-topbar {
           }
         }
       }
+      
+
 
     }
 
@@ -256,13 +266,12 @@ meta.foundation-mq-topbar {
         height: auto;
         display: block;
         background: $topbar-dropdown-bg;
-        font-size: $em-base;
+        font-size: $rem-base;
         margin: 0;
       }
 
       .divider,
       [role="separator"] {
-        border-bottom: $topbar-divider-border-bottom;
         border-top: $topbar-divider-border-top;
         clear: both;
         height: 1px;
@@ -315,7 +324,6 @@ meta.foundation-mq-topbar {
         &:hover > a {
           background: $topbar-link-bg-hover;
           color: $topbar-link-color-hover;
-          box-shadow: inset 0 -4px darken($topbar-link-bg-hover, 10%);
 
         }
 
@@ -323,7 +331,6 @@ meta.foundation-mq-topbar {
         &.active > a {
           background: $topbar-link-bg-active;
           color: $topbar-link-color-active;
-          box-shadow: inset 0 -4px darken($primary-color, 10%);
   		&:hover {
               background: $topbar-link-bg-active-hover;
           }
@@ -414,12 +421,9 @@ meta.foundation-mq-topbar {
 
         input,
         .button {
-          line-height: 2em;
-          font-size: em-calc(14);
-          height: 2em;
-          padding: 0 10px;
+          font-size: rem-calc(14);
           position: relative;
-          top: 8px;
+          top: 7px;
         }
 
         &.expanded { background: $topbar-bg; }
@@ -491,7 +495,7 @@ meta.foundation-mq-topbar {
               &:after {
                 border: none;
                 content: "\00bb";
-                top: 1em;
+                top: 1rem;
                 margin-top: -2px;
                 #{$opposite-direction}: 5px;
               }
@@ -533,7 +537,6 @@ meta.foundation-mq-topbar {
           border-bottom: none;
           border-top: none;
           border-#{$opposite-direction}: $topbar-divider-border-bottom;
-          border-#{$default-float}: $topbar-divider-border-top;
           clear: none;
           height: $topbar-height;
           width: 0;

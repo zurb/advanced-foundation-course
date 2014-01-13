@@ -2,6 +2,7 @@
   "name": "advanced-foundation-course",
   "version": "0.0.1",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
+    "foundation": "~5.0.2",
+    "masonry-shim": "~3.1.4"
   }
 }

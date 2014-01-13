@@ -1,0 +1,6 @@
+{
+  "name": "masonry-shim",
+  "version": "3.1.4",
+  "description": "Shim for Masonry",
+  "main": "masonry.pkgd.min.js"
+}
