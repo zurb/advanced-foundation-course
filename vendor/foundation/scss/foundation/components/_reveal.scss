@@ -15,13 +15,13 @@ $reveal-overlay-bg-old: #000 !default;
 $reveal-modal-bg: #fff !default;
 $reveal-position-top: 50px !default;
 $reveal-default-width: 80% !default;
-$reveal-modal-padding: em-calc(20) !default;
+$reveal-modal-padding: rem-calc(20) !default;
 $reveal-box-shadow: 0 0 10px rgba(#000,.4) !default;
 
 // We use these to style the reveal close button
-$reveal-close-font-size: em-calc(22) !default;
-$reveal-close-top: em-calc(8) !default;
-$reveal-close-side: em-calc(11) !default;
+$reveal-close-font-size: rem-calc(22) !default;
+$reveal-close-top: rem-calc(8) !default;
+$reveal-close-side: rem-calc(11) !default;
 $reveal-close-color: #aaa !default;
 $reveal-close-weight: bold !default;
 
@@ -33,7 +33,7 @@ $reveal-border-color: #666 !default;
 $reveal-modal-class: "reveal-modal" !default;
 $close-reveal-modal-class: "close-reveal-modal" !default;
 
-// 
+//
 // @mixins
 //
 
@@ -56,7 +56,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 // $width - Sets reveal width Default: $reveal-default-width || 80%
 //
 @mixin reveal-modal-base(
-  $base-style:true, 
+  $base-style:true,
   $width:$reveal-default-width) {
   @if $base-style {
     visibility: hidden;
@@ -92,13 +92,13 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 // $box-shadow - Choose whether or not to include the default box-shadow. Default: true, Options: false
 // $top-offset - Default: $reveal-position-top || 50px
 @mixin reveal-modal-style(
-  $bg:$reveal-modal-bg, 
-  $padding:$reveal-modal-padding, 
-  $border:true, 
-  $border-style:$reveal-border-style, 
-  $border-width:$reveal-border-width, 
-  $border-color:$reveal-border-color, 
-  $box-shadow:true, 
+  $bg:$reveal-modal-bg,
+  $padding:$reveal-modal-padding,
+  $border:true,
+  $border-style:$reveal-border-style,
+  $border-width:$reveal-border-width,
+  $border-color:$reveal-border-color,
+  $box-shadow:true,
   $top-offset:$reveal-position-top) {
 
   @if $bg { background-color: $bg; }
@@ -147,7 +147,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     @media #{$medium-up} {
 
       .#{$reveal-modal-class} {
-        @include reveal-modal-style(false, em-calc(30), false, $box-shadow: false, $top-offset: em-calc(100));
+        @include reveal-modal-style(false, rem-calc(30), false, $box-shadow: false, $top-offset: rem-calc(100));
 
         &.tiny  { @include reveal-modal-base(false, 30%); }
         &.small { @include reveal-modal-base(false, 40%); }

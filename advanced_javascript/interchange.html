@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <script src="../vendor/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="small-12 columns">
+        <a href="index.html">&larr; Back</a>
+        <h1>Interchange for Images</h1>
+        <hr>
+
+        <p>Watch the image change</p>
+        <hr>
+        <img data-interchange="
+          [http://placehold.it/640x300/13A7C7/EAF6FC&text=DEFAULT, (default)],
+          [http://placehold.it/1024x400/1399BD/EAF6FC&text=MEDIUM, (medium)],
+          [http://placehold.it/1440x600/137795/EAF6FC&text=LARGE, (large)]">
+        
+      </div>
+    </div>
+
+     <script src="../vendor/jquery/jquery.min.js"></script>
+     <script src="../vendor/foundation/js/foundation.min.js"></script>
+     <script>
+      $(document).foundation();
+     </script>
+  </body>
+</html>

@@ -15,10 +15,12 @@
       load_attr : 'interchange',
 
       named_queries : {
-        'default' : 'only screen and (min-width: 1px)',
-        small : 'only screen and (min-width: 768px)',
-        medium : 'only screen and (min-width: 1280px)',
-        large : 'only screen and (min-width: 1440px)',
+        'default' : Foundation.media_queries.small,
+        small : Foundation.media_queries.small,
+        medium : Foundation.media_queries.medium,
+        large : Foundation.media_queries.large,
+        xlarge : Foundation.media_queries.xlarge,
+        xxlarge: Foundation.media_queries.xxlarge,
         landscape : 'only screen and (orientation: landscape)',
         portrait : 'only screen and (orientation: portrait)',
         retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 
@@ -120,7 +122,7 @@
       var count = scenarios.length;
 
       if (count > 0) {
-        var el = $('[data-uuid="' + uuid + '"]');
+        var el = this.S('[data-uuid="' + uuid + '"]');
 
         for (var i = count - 1; i >= 0; i--) {
           var mq, rule = scenarios[i][2];
@@ -147,14 +149,14 @@
     },
 
     update_images : function () {
-      var images = document.querySelectorAll('img[' + this.data_attr + ']'),
+      var images = this.S('img[' + this.data_attr + ']'),
           count = images.length,
           loaded_count = 0,
           data_attr = this.data_attr;
 
       this.cache = {};
       this.cached_images = [];
-      this.images_loaded = false;
+      this.images_loaded = (count === 0);
 
       for (var i = count - 1; i >= 0; i--) {
         loaded_count++;
@@ -176,7 +178,7 @@
     },
 
     update_nodes : function () {
-      var nodes = document.querySelectorAll('[' + this.data_attr + ']:not(img)'),
+      var nodes = this.S('[' + this.data_attr + ']:not(img)'),
           count = nodes.length,
           loaded_count = 0,
           data_attr = this.data_attr;
