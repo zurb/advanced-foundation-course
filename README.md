@@ -1,12 +1,20 @@
 # Advanced Foundation Course
 
-## Pre-flight checklist
+## Quickstart (Beginner)
+
+  * [Download this project](https://github.com/zurb/advanced-foundation-course/archive/master.zip)
+  * Open `index.html` in your browser!
+
+
+## Quickstart (Advanced)
+
+### Pre-flight checklist
 
   * [Install Node.js](http://nodejs.org/)
   * Install bower: `npm install bower -g`
   * Install compass: `gem install compass`
 
-## Quickstart
+Once everything is installed run:
 
 ```bash
 git clone git@github.com:zurb/advanced-foundation-course.git
@@ -28,9 +36,9 @@ After you run the commands above you'll see the following directory structure
 advanced-foundation-course/
 ├── vendor/
 │   ├── foundation/
-│   ├── foundation-icon-fonts/
 │   ├── jquery/
-│   └── modernizr/
+│   ├── modernizr/
+│   └── masonry-shim/
 ├── css/
 ├── scss/
 │   └── app.scss
