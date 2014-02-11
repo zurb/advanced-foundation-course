@@ -2,7 +2,7 @@
   "name": "advanced-foundation-course",
   "version": "0.0.1",
   "dependencies": {
-    "foundation": "~5.0.2",
+    "foundation": "~5.1.0",
     "masonry-shim": "~3.1.4"
   }
 }
